@@ -193,7 +193,7 @@ describe('v1.11.1 initialisation', () => {
             i18n.addResourceBundle(
               'en-US',
               'translation',
-              { deep: { 'simple_en-US_2': 'ok_from_en-US_2' } },
+              { deep: { 'simple_en-US_2': 'ok_from_en-US_2' }, nonDeepKey: 'ok_from_en-US_2' },
               true,
             );
             i18n.addResourceBundle(
@@ -210,9 +210,10 @@ describe('v1.11.1 initialisation', () => {
             );
           });
 
-          it('it should add the new namespace to the namespace array', () => {
+          it('it should add the new namespace to the namespace array and add new root keys', () => {
             expect(i18n.t('deep.simple_en-US_1')).to.equal('ok_from_en-US_1');
             expect(i18n.t('deep.simple_en-US_2')).to.equal('ok_from_en-US_2');
+            expect(i18n.t('nonDeepKey')).to.equal('ok_from_en-US_2');
           });
 
           it('it should not overwrite any existing entries if the overwrite switch is off', () => {

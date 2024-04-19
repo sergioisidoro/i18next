@@ -215,9 +215,9 @@
     return getPath(defaultData, key);
   }
   function deepExtend(target, source, overwrite) {
-    for (const prop in source) {
+    for (const prop in target) {
       if (prop !== '__proto__' && prop !== 'constructor') {
-        if (prop in target) {
+        if (prop in source) {
           if (typeof target[prop] === 'string' || target[prop] instanceof String || typeof source[prop] === 'string' || source[prop] instanceof String) {
             if (overwrite) target[prop] = source[prop];
           } else {
